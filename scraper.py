@@ -9,7 +9,7 @@ from pinscrape import pinscrape
 class Scraper:
 
     def __init__(self, key, lmt):
-        env_var = dotenv_values("env.env")
+        env_var = dotenv_values(".env")
         self.pexels_api_key = env_var["PEXELS_API_KEY"]
         self.key = key
         self.limit = lmt
