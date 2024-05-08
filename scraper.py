@@ -1,5 +1,6 @@
 import requests
 import os
+import argparse
 from dotenv import dotenv_values
 from bs4 import BeautifulSoup
 from pexels_api import API
@@ -14,9 +15,15 @@ class Scraper:
         self.key = key
         self.limit = lmt
 
+    def get_parser():
+        parser = argparse.ArgumentParser(description="--- Web-image-scraper usage ---")
+        parser.add_argument("--kw", type=str, help="Keyword of scrape image")
+        parser.add_argument("--lm", type=int, default=1, help="Download limit")
+        return parser
+
     # working, using beautiful soup to scrape and download images
     def download_unsplash_images(self):
-        site = "unsplash"
+        site = "Unsplash"
         url = f"https://unsplash.com/s/photos/{self.key}/"
 
         response = requests.get(url)
@@ -46,7 +53,7 @@ class Scraper:
 
     # working, using official api key and pexels_api module
     def download_pexels_images(self, pages=1, img_per_page=1):
-        site = "pexels"
+        site = "Pexels"
         api_key = self.pexels_api_key
         api = API(api_key)
 
@@ -73,7 +80,7 @@ class Scraper:
 
     # working, using pinscrape to download images
     def download_pinterest_images(self):
-        site = "pinterest"
+        site = "Pinterest"
 
         print("Downloading Pinterest images...")
         pinscrape.scraper.scrape(
@@ -86,8 +93,17 @@ class Scraper:
 
 def main():
     try:
-        key = input("Which type of images you want to download: ")
-        download_limit = int(input("How many images you want to download: "))
+        # testing parser function
+        args = Scraper.get_parser().parse_args()
+        if args.kw:
+            key = args.kw
+        else:
+            key = input("Which type of images you want to download: ")
+
+        if args.lm:
+            download_limit = args.lm
+        else:
+            download_limit = int(input("How many images you want to download: "))
 
         if download_limit > 0:
             scraper = Scraper(key, download_limit)
@@ -95,7 +111,7 @@ def main():
             scraper.download_pexels_images()
             scraper.download_pinterest_images()
         else:
-            print("Enter a number above 0.")
+            raise ValueError("Download limit error")
     except ValueError as e:
         print(f"An error occurred: {e}. Please enter a valid number.")
 

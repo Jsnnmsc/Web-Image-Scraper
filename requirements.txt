@@ -1,0 +1,8 @@
+beautifulsoup4==4.11.1
+pandas==2.2.2
+pexels_api==1.0.1
+Pillow==10.0.1
+Pillow==10.3.0
+pinscrape==3.0.3
+python-dotenv==1.0.1
+Requests==2.31.0
