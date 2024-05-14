@@ -1,7 +1,7 @@
 # Web-Image-Scraper
 ## Introduction
 
- A simple image scraper developed by requests, bs4, dotenv etc.
+ A simple image scraper developed by requests, bs4, dotenv etc.  
  Scraping Pexels/Unsplash/Pinterest images.
 
  Pinterest section using [pinscrape](https://github.com/iamatulsingh/pinscrape) by [iamatulsingh](https://github.com/iamatulsingh)
@@ -10,10 +10,11 @@
 
  First, use `pip install -r requirements.txt` to install require packages from requirements.txt file.
 
-  Before using Pexels section, you need to get the API-key of Pexels from official website, then create an .env file, save as the format down below.
+  ~~Before using Pexels section, you need to get the API-key of Pexels from official website, then create an .env file, save as the format down below.~~  
  ```
  PEXELS_API_KEY = "YOUR_API_KEY"
  ```
+ Now I created `.env` for you guys, so you just need to replace with your Pexels API key.
 
  ## How to use
  Using CLI to interact with scraper, or you can run `scraper.py` straightly and it will ask you variables like the keyword, download limit.
