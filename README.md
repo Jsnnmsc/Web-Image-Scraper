@@ -30,7 +30,7 @@ options:
 
  ### Basic usage
  
- Download "ferrari" image, limit set 5
+ Download "ferrari" image, limit set 5.
  ```
  python scraper.py --kw ferrari --lm 5
  ```
